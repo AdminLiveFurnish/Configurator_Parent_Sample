@@ -134,11 +134,11 @@ export default function Layout() {
         <div className={styles.viewerWrapper}>
           <div className={styles.viewer}>
             <iframe
-              option="modelViewerFrame"
-              src="http://localhost:3002/configurator/1"
+              id='modelViewerFrame'
+              src="http://localhost:3001/configurator/1"
               // src="https://app.imagine.io/configurator-viewer/ffba4f6f-b3d0-5b19-9d05-dd932b265758"
               height="800"
-              woptionth="100%"
+              width="100%"
               title="Rockers Inverted Skate Guards"
               border="0"
               allowFullScreen
