@@ -3,55 +3,31 @@ import cx from "classnames";
 
 import styles from "../styles/layout.module.sass";
 
-const currentSide = signal(0); //0 right, 1 left
+const currentSoptione = signal(0); //0 right, 1 left
 
 function OptionsSection({ title, label }) {
-  const optionsLabel1 = [
-    { backgroundColor: "#C4019B", render_id: "515193", id: "6118" },
-    { backgroundColor: "#C4019B", render_id: "515197", id: "6119" },
-    { backgroundColor: "#A50101", render_id: "515199", id: "6120" },
-    { backgroundColor: "#CA7A00", render_id: "515201", id: "6121" },
-    { backgroundColor: "#F7F601", render_id: "515203", id: "6122" },
-    { backgroundColor: "#BDEF00", render_id: "515205", id: "6123" },
-    { backgroundColor: "#01C300", render_id: "515207", id: "6124" },
-    { backgroundColor: "#044A00", render_id: "515209", id: "6125" },
-    { backgroundColor: "#01A694", render_id: "515211", id: "6126" },
-    { backgroundColor: "#0169D8", render_id: "515213", id: "6127" },
-    { backgroundColor: "#151486", render_id: "515215", id: "6128" },
-    { backgroundColor: "#BC82C3", render_id: "515217", id: "6129" },
-    { backgroundColor: "#3C005F", render_id: "515219", id: "6130" },
-    { backgroundColor: "#5F0C26", render_id: "515221", id: "6131" },
-    { backgroundColor: "#310E26", render_id: "515223", id: "6132" },
-    { backgroundColor: "#000101", render_id: "515225", id: "6133" },
-    { backgroundColor: "#373637", render_id: "515227", id: "6134" },
-    { backgroundColor: "#FFFFFF", render_id: "515229", id: "6135" },
-    { backgroundColor: "#87747C", render_id: "515231", id: "6136" },
-    { backgroundColor: "#F3F3C5", render_id: "515233", id: "6137" },
+  const options = [
+    { backgroundColor: "#C4019B", value: "1" },
+    { backgroundColor: "#C4019B", value: "2" },
+    { backgroundColor: "#A50101", value: "3" },
+    { backgroundColor: "#CA7A00", value: "4" },
+    { backgroundColor: "#F7F601", value: "5" },
+    { backgroundColor: "#BDEF00", value: "6" },
+    { backgroundColor: "#01C300", value: "7" },
+    { backgroundColor: "#044A00", value: "8" },
+    { backgroundColor: "#01A694", value: "9" },
+    { backgroundColor: "#0169D8", value: "10" },
+    { backgroundColor: "#151486", value: "11" },
+    { backgroundColor: "#BC82C3", value: "12" },
+    { backgroundColor: "#3C005F", value: "13" },
+    { backgroundColor: "#5F0C26", value: "14" },
+    { backgroundColor: "#310E26", value: "15" },
+    { backgroundColor: "#000101", value: "16" },
+    { backgroundColor: "#373637", value: "17" },
+    { backgroundColor: "#FFFFFF", value: "18" },
+    { backgroundColor: "#87747C", value: "19" },
+    { backgroundColor: "#F3F3C5", value: "20" },
   ];
-  const optionsLabel2 = [
-    { backgroundColor: "#C4019B", render_id: "515194", id: "6139" },
-    { backgroundColor: "#C4019B", render_id: "515198", id: "6140" },
-    { backgroundColor: "#A50101", render_id: "515200", id: "6141" },
-    { backgroundColor: "#CA7A00", render_id: "515202", id: "6142" },
-    { backgroundColor: "#F7F601", render_id: "515204", id: "6143" },
-    { backgroundColor: "#BDEF00", render_id: "515206", id: "6144" },
-    { backgroundColor: "#01C300", render_id: "515208", id: "6145" },
-    { backgroundColor: "#044A00", render_id: "515210", id: "6146" },
-    { backgroundColor: "#01A694", render_id: "515212", id: "6147" },
-    { backgroundColor: "#0169D8", render_id: "515214", id: "6148" },
-    { backgroundColor: "#151486", render_id: "515216", id: "6149" },
-    { backgroundColor: "#BC82C3", render_id: "515218", id: "6150" },
-    { backgroundColor: "#3C005F", render_id: "515220", id: "6151" },
-    { backgroundColor: "#5F0C26", render_id: "515222", id: "6152" },
-    { backgroundColor: "#310E26", render_id: "515224", id: "6153" },
-    { backgroundColor: "#000101", render_id: "515226", id: "6154" },
-    { backgroundColor: "#373637", render_id: "515228", id: "6155" },
-    { backgroundColor: "#FFFFFF", render_id: "515230", id: "6156" },
-    { backgroundColor: "#87747C", render_id: "515232", id: "6157" },
-    { backgroundColor: "#F3F3C5", render_id: "515234", id: "6158" },
-  ];
-
-const options = label === "1599"? optionsLabel1 : optionsLabel2;
 
   const sendMessageToParent = (data = null) => {
     const iframe = document.querySelector("#modelViewerFrame");
@@ -79,10 +55,7 @@ const options = label === "1599"? optionsLabel1 : optionsLabel2;
               onClick={() =>
                 sendData({
                   label: label,
-                  option: {
-                    id: option.id,
-                    render_id: option.render_id,
-                  },
+                  option: option.value
                 })
               }
             ></div>
@@ -95,8 +68,8 @@ const options = label === "1599"? optionsLabel1 : optionsLabel2;
 
 function OptionsSection2({ title, label }) {
   const options = [
-    { backgroundColor: "#E1C16E", render_id: "515195", id: "6160" },
-    { backgroundColor: "#C0C0C0", render_id: "515196", id: "6161" },
+    { backgroundColor: "#E1C16E", value: "6160" },
+    { backgroundColor: "#C0C0C0", value: "6161" },
   ];
 
   const sendMessageToParent = (data = null) => {
@@ -125,10 +98,7 @@ function OptionsSection2({ title, label }) {
               onClick={() =>
                 sendData({
                   label: label,
-                  option: {
-                    id: option.id,
-                    render_id: option.render_id,
-                  },
+                  option: option.value
                 })
               }
             ></div>
@@ -140,9 +110,9 @@ function OptionsSection2({ title, label }) {
 }
 
 export default function Layout() {
-  function handleSideChange(side) {
-    console.log("side changed to: ", side);
-    currentSide.value = side;
+  function handleSoptioneChange(soptione) {
+    console.log("soptione changed to: ", soptione);
+    currentSoptione.value = soptione;
   }
 
   return (
@@ -164,11 +134,11 @@ export default function Layout() {
         <div className={styles.viewerWrapper}>
           <div className={styles.viewer}>
             <iframe
-              id="modelViewerFrame"
-              src="http://localhost:3003/configurator/1"
+              option="modelViewerFrame"
+              src="http://localhost:3002/configurator/1"
               // src="https://app.imagine.io/configurator-viewer/ffba4f6f-b3d0-5b19-9d05-dd932b265758"
               height="800"
-              width="100%"
+              woptionth="100%"
               title="Rockers Inverted Skate Guards"
               border="0"
               allowFullScreen
@@ -178,38 +148,38 @@ export default function Layout() {
             <div className={styles.price}>
               <p>$348.00</p>
             </div>
-            {/* <div className={styles.sideSelection}>
+            {/* <div className={styles.soptioneSelection}>
               <p className={styles.sectionTitle}>- CUSTOMIZE</p>
-              <div className={styles.sideSelectionButtonWrapper}>
+              <div className={styles.soptioneSelectionButtonWrapper}>
                 <button
                   className={cx(
-                    styles.sideSelectionButton,
-                    currentSide.value === 0 ? styles.active : ""
+                    styles.soptioneSelectionButton,
+                    currentSoptione.value === 0 ? styles.active : ""
                   )}
-                  onClick={() => handleSideChange(0)}
+                  onClick={() => handleSoptioneChange(0)}
                 >
                   Right Blade
                 </button>
                 <button
                   className={cx(
-                    styles.sideSelectionButton,
-                    currentSide.value === 1 ? styles.active : ""
+                    styles.soptioneSelectionButton,
+                    currentSoptione.value === 1 ? styles.active : ""
                   )}
-                  onClick={() => handleSideChange(1)}
+                  onClick={() => handleSoptioneChange(1)}
                 >
                   Left Blade
                 </button>
               </div>
             </div> */}
-            {currentSide.value === 0 && (
+            {currentSoptione.value === 0 && (
               <>
-                <OptionsSection title="Zone 1" label="1599" />
-                <OptionsSection title="Zone 2" label="1600" />
+                <OptionsSection title="Zone 1" label="Zone 1" />
+                <OptionsSection title="Zone 2" label="Zone 2" />
                 {/* <OptionsSection title="Zone 3" label="Right Zone 1" /> */}
                 {/* <OptionsSection title="Zone 4" label="Right Zone 1" /> */}
               </>
             )}
-            {/* {currentSide.value === 1 && (
+            {/* {currentSoptione.value === 1 && (
               <>
                 <OptionsSection title="Zone 1" label="Left Zone 1" />
                 <OptionsSection title="Zone 2" label="Left Zone 1" />
@@ -217,7 +187,7 @@ export default function Layout() {
                 <OptionsSection title="Zone 4" label="Left Zone 1" />
               </>
             )} */}
-            <OptionsSection2 title="Spring" label="1601" />
+            <OptionsSection2 title="Spring" label="Spring" />
             <button className={styles.addButton}>ADD TO CART</button>
           </div>
         </div>
