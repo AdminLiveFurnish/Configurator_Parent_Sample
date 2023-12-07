@@ -1,9 +1,6 @@
-import { signal } from "@preact/signals-react";
-import cx from "classnames";
 
+import StickNavBar from "../components/StickyNavBar";
 import styles from "../styles/layout.module.sass";
-
-const currentSoptione = signal(0); //0 right, 1 left
 
 function OptionsSection({ title, label }) {
   const options = [
@@ -55,7 +52,7 @@ function OptionsSection({ title, label }) {
               onClick={() =>
                 sendData({
                   label: label,
-                  option: option.value
+                  option: option.value,
                 })
               }
             ></div>
@@ -98,7 +95,7 @@ function OptionsSection2({ title, label }) {
               onClick={() =>
                 sendData({
                   label: label,
-                  option: option.value
+                  option: option.value,
                 })
               }
             ></div>
@@ -109,37 +106,21 @@ function OptionsSection2({ title, label }) {
   );
 }
 
-export default function Layout() {
-  function handleSoptioneChange(soptione) {
-    console.log("soptione changed to: ", soptione);
-    currentSoptione.value = soptione;
-  }
-
+export default function ConfiguratorViewer() {
   return (
     <>
-      <header className={styles.header}>
-        <img src="/logo.png" alt="" className={styles.logo} />
-        <div className={styles.navTabsWrapper}>
-          <div className={cx(styles.navTabs, styles.selected)}>
-            SKATE GUARDS
-          </div>
-          <div className={styles.navTabs}>SOAKERS</div>
-          <div className={styles.navTabs}>SK8TAPE</div>
-          <div className={styles.navTabs}>APPAREL</div>
-          <div className={styles.navTabs}>DEALER</div>
-        </div>
-      </header>
+      <StickNavBar/>
       <div className={styles.contentWrapper}>
-        <div className={styles.productName}>ROCKERS INVERTED SKATE GUARDS</div>
+        <div className={styles.productName}>ROCKERZ INVERTED SKATE GUARDS</div>
+        <p>Image Configurator</p>
         <div className={styles.viewerWrapper}>
           <div className={styles.viewer}>
             <iframe
-              id='modelViewerFrame'
-              src="http://localhost:3001/configurator/1"
-              // src="https://app.imagine.io/configurator-viewer/ffba4f6f-b3d0-5b19-9d05-dd932b265758"
+              id="modelViewerFrame"
+              src="https://rockers.imagine.io/configurator/1"
               height="800"
               width="100%"
-              title="Rockers Inverted Skate Guards"
+              title="Rockerz Inverted Skate Guards"
               border="0"
               allowFullScreen
             ></iframe>
@@ -148,45 +129,8 @@ export default function Layout() {
             <div className={styles.price}>
               <p>$348.00</p>
             </div>
-            {/* <div className={styles.soptioneSelection}>
-              <p className={styles.sectionTitle}>- CUSTOMIZE</p>
-              <div className={styles.soptioneSelectionButtonWrapper}>
-                <button
-                  className={cx(
-                    styles.soptioneSelectionButton,
-                    currentSoptione.value === 0 ? styles.active : ""
-                  )}
-                  onClick={() => handleSoptioneChange(0)}
-                >
-                  Right Blade
-                </button>
-                <button
-                  className={cx(
-                    styles.soptioneSelectionButton,
-                    currentSoptione.value === 1 ? styles.active : ""
-                  )}
-                  onClick={() => handleSoptioneChange(1)}
-                >
-                  Left Blade
-                </button>
-              </div>
-            </div> */}
-            {currentSoptione.value === 0 && (
-              <>
-                <OptionsSection title="Zone 1" label="Zone 1" />
-                <OptionsSection title="Zone 2" label="Zone 2" />
-                {/* <OptionsSection title="Zone 3" label="Right Zone 1" /> */}
-                {/* <OptionsSection title="Zone 4" label="Right Zone 1" /> */}
-              </>
-            )}
-            {/* {currentSoptione.value === 1 && (
-              <>
-                <OptionsSection title="Zone 1" label="Left Zone 1" />
-                <OptionsSection title="Zone 2" label="Left Zone 1" />
-                <OptionsSection title="Zone 3" label="Left Zone 1" />
-                <OptionsSection title="Zone 4" label="Left Zone 1" />
-              </>
-            )} */}
+            <OptionsSection title="Zone 1" label="Zone 1" />
+            <OptionsSection title="Zone 2" label="Zone 2" />
             <OptionsSection2 title="Spring" label="Spring" />
             <button className={styles.addButton}>ADD TO CART</button>
           </div>
