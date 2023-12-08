@@ -1,6 +1,8 @@
+import {signal} from "@preact/signals-react"
 import StickNavBar from "../components/StickyNavBar";
 import styles from "../styles/layout.module.sass";
 
+const currentside = signal(0);  //0 right or common 1 for left
 
 function OptionsSection({ title, labels }) {
   const options = [
@@ -129,7 +131,30 @@ export default function ConfiguratorViewer() {
           <div className={styles.optionsPanel}>
             <div className={styles.price}>
               <p>$348.00</p>
-            </div>
+            </div>>
+            {/* <div className={styles.sideSelection}>
+              <p className={styles.sectionTitle}>- CUSTOMIZE</p>
+              <div className={styles.sideSelectionButtonWrapper}>
+                <button
+                  className={cx(
+                    styles.sideSelectionButton,
+                    currentside.value === 0 ? styles.active : ""
+                  )}
+                  onClick={() => handlesideChange(0)}
+                >
+                  Right Blade
+                </button>
+                <button
+                  className={cx(
+                    styles.sideSelectionButton,
+                    currentside.value === 1 ? styles.active : ""
+                  )}
+                  onClick={() => handlesideChange(1)}
+                >
+                  Left Blade
+                </button>
+              </div>
+            </div> */}
             <OptionsSection
               title="Zone 1"
               labels={["rZone1", "rZone3", "lZone2", "lZone4"]}

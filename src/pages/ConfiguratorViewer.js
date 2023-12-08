@@ -39,6 +39,7 @@ function OptionsSection({ title, label }) {
     console.log("values", values);
     sendMessageToParent(values);
   };
+  
   return (
     <div className={styles.sectionWrapper}>
       <div>
