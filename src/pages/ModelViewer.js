@@ -1,8 +1,8 @@
-import {signal} from "@preact/signals-react"
+// import {signal} from "@preact/signals-react"
 import StickNavBar from "../components/StickyNavBar";
 import styles from "../styles/layout.module.sass";
 
-const currentside = signal(0);  //0 right or common 1 for left
+// const currentside = signal(0);  //0 right or common 1 for left
 
 function OptionsSection({ title, labels }) {
   const options = [
@@ -157,11 +157,19 @@ export default function ConfiguratorViewer() {
             </div> */}
             <OptionsSection
               title="Zone 1"
-              labels={["rZone1", "rZone3", "lZone2", "lZone4"]}
+              labels={["rZone1", "lZone1"]}
             />
             <OptionsSection
               title="Zone 2"
-              labels={["rZone2", "rZone4", "lZone1", "lZone3"]}
+              labels={["rZone2", "lZone2"]}
+            />
+            <OptionsSection
+              title="Zone 1"
+              labels={["rZone3", "lZone3"]}
+            />
+            <OptionsSection
+              title="Zone 2"
+              labels={["rZone4", "lZone4"]}
             />
             <OptionsSection2
               title="Spring"

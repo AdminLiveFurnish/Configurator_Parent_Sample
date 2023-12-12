@@ -11,12 +11,12 @@ const productConfigureLists = [
   },
   {
     name: "ROCKERZ QUAD",
-    image: "/rockerzinverted.png",
+    image: "/rockerzquad.png",
     route: "/configurator/2",
   },
   {
-    name: "ROCKERZ OCTA",
-    image: "/rockerzinverted.png",
+    name: "ROCKERZ OCTO",
+    image: "/rockerzocto.png",
     route: "/configurator/3",
   },
 ];
@@ -28,12 +28,12 @@ const productModalViewerLists = [
   },
   {
     name: "ROCKERZ QUAD",
-    image: "/rockerzinverted.png",
+    image: "/rockerzquad.png",
     route: "/modelviewer/2",
   },
   {
-    name: "ROCKERZ OCTA",
-    image: "/rockerzinverted.png",
+    name: "ROCKERZ OCTO",
+    image: "/rockerzocto.png",
     route: "/modelviewer/3",
   },
 ];
