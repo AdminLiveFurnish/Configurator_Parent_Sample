@@ -5,8 +5,8 @@ import cx from "classnames";
 
 const BLADE_TYPE = {
   RIGHT: 0,
-  LEFT:1
-}
+  LEFT: 1,
+};
 
 function OptionsSection({ title, labels }) {
   const options = [
@@ -112,6 +112,32 @@ function OptionsSection2({ title, labels }) {
   );
 }
 
+const rightZoneOptionLists = [
+  {
+    name: "Zone 1",
+    labels: ["rZone3", "rZone4"],
+    type: "zone",
+  },
+  {
+    name: "Zone 2",
+    labels: ["rZone1", "rZone2"],
+    type: "zone",
+  },
+];
+
+const leftZoneOptionLists = [
+  {
+    name: "Zone 1",
+    labels: ["lZone3", "lZone4"],
+    type: "zone",
+  },
+  {
+    name: "Zone 2",
+    labels: ["lZone1", "lZone2"],
+    type: "zone",
+  },
+];
+
 export default function ConfiguratorViewer() {
   const [currentSide, setCurrentSide] = useState(BLADE_TYPE.RIGHT);
 
@@ -166,28 +192,29 @@ export default function ConfiguratorViewer() {
             </div>
             {currentSide === BLADE_TYPE.RIGHT ? (
               <>
-                <OptionsSection
-                  title="Zone 1"
-                  labels={["rZone3", "rZone4"]}
-                  />
-                <OptionsSection
-                  title="Zone 2"
-                  labels={["rZone1", "rZone2",]}
-                />
+                {rightZoneOptionLists?.map((list, idx) => {
+                  return (
+                    <OptionsSection
+                      key={idx}
+                      title={list?.name}
+                      labels={list?.labels}
+                    />
+                  );
+                })}
               </>
             ) : (
               <>
-                <OptionsSection
-                  title="Zone 1"
-                  labels={["lZone3", "lZone4"]}
-                />
-                <OptionsSection
-                  title="Zone 2"
-                  labels={["lZone1", "lZone2",]}
-                />
+                {leftZoneOptionLists?.map((list, idx) => {
+                  return (
+                    <OptionsSection
+                      key={idx}
+                      title={list?.name}
+                      labels={list?.labels}
+                    />
+                  );
+                })}
               </>
             )}
-
             <OptionsSection2
               title="Spring"
               labels={["rZoneSpring", "lZoneSpring"]}

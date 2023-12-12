@@ -105,8 +105,25 @@ function OptionsSection2({ title, labels }) {
   );
 }
 
+const optionLists = [
+  {
+    name: "Zone 1",
+    labels: ["rZone1", "rZone3", "lZone2", "lZone4"],
+    type: "zone",
+  },
+  {
+    name: "Zone 2",
+    labels: ["rZone2", "rZone4", "lZone1", "lZone3"],
+    type: "zone",
+  },
+  {
+    name: "Spring",
+    labels: ["rZoneSpring", "lZoneSpring"],
+    type: "spring",
+  },
+];
+
 export default function ConfiguratorViewer() {
- 
   return (
     <>
       <StickNavBar />
@@ -129,18 +146,21 @@ export default function ConfiguratorViewer() {
             <div className={styles.price}>
               <p>$348.00</p>
             </div>
-            <OptionsSection
-              title="Zone 1"
-              labels={["rZone1", "rZone3", "lZone2", "lZone4"]}
-            />
-            <OptionsSection
-              title="Zone 2"
-              labels={["rZone2", "rZone4", "lZone1", "lZone3"]}
-            />
-            <OptionsSection2
-              title="Spring"
-              labels={["rZoneSpring", "lZoneSpring"]}
-            />
+            {optionLists?.map((list, idx) => {
+              return list?.type === "spring" ? (
+                <OptionsSection2
+                  key={idx}
+                  title={list?.name}
+                  labels={list?.labels}
+                />
+              ) : (
+                <OptionsSection
+                  key={idx}
+                  title={list?.name}
+                  labels={list?.labels}
+                />
+              );
+            })}
             <button className={styles.addButton}>ADD TO CART</button>
           </div>
         </div>

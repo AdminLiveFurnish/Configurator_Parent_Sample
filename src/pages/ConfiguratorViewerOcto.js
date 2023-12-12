@@ -112,6 +112,52 @@ function OptionsSection2({ title, label }) {
   );
 }
 
+const rightZoneOptionLists = [
+  {
+    name: "Zone 1",
+    label: "Right Zone 1",
+    type: "zone",
+  },
+  {
+    name: "Zone 2",
+    label: "Right Zone 2",
+    type: "zone",
+  },
+  {
+    name: "Zone 3",
+    label: "Right Zone 3",
+    type: "zone",
+  },
+  {
+    name: "Zone 4",
+    label: "Right Zone 4",
+    type: "zone",
+  },
+];
+
+const leftZoneOptionLists = [
+  {
+    name: "Zone 1",
+    label: "Left Zone 1",
+    type: "zone",
+  },
+  {
+    name: "Zone 2",
+    label: "Left Zone 2",
+    type: "zone",
+  },
+  {
+    name: "Zone 3",
+    label: "Left Zone 3",
+    type: "zone",
+  },
+  {
+    name: "Zone 4",
+    label: "Left Zone 4",
+    type: "zone",
+  },
+];
+
 export default function ConfiguratorViewer() {
   const [currentSide, setCurrentSide] = useState(BLADE_TYPE.RIGHT);
 
@@ -167,17 +213,27 @@ export default function ConfiguratorViewer() {
             </div>
             {currentSide === BLADE_TYPE.RIGHT ? (
               <>
-                <OptionsSection title="Zone 1" label="Right Zone 1" />
-                <OptionsSection title="Zone 2" label="Right Zone 2" />
-                <OptionsSection title="Zone 3" label="Right Zone 3" />
-                <OptionsSection title="Zone 4" label="Right Zone 4" />
+                {rightZoneOptionLists?.map((list, idx) => {
+                  return (
+                    <OptionsSection
+                      key={idx}
+                      title={list?.name}
+                      label={list?.label}
+                    />
+                  );
+                })}
               </>
             ) : (
               <>
-                <OptionsSection title="Zone 1" label="Left Zone 1" />
-                <OptionsSection title="Zone 2" label="Left Zone 2" />
-                <OptionsSection title="Zone 3" label="Left Zone 3" />
-                <OptionsSection title="Zone 4" label="Left Zone 4" />
+                {leftZoneOptionLists?.map((list, idx) => {
+                  return (
+                    <OptionsSection
+                      key={idx}
+                      title={list?.name}
+                      label={list?.label}
+                    />
+                  );
+                })}
               </>
             )}
             <OptionsSection2 title="Spring" label="Spring" />

@@ -1,4 +1,3 @@
-
 import StickNavBar from "../components/StickyNavBar";
 import styles from "../styles/layout.module.sass";
 
@@ -106,10 +105,23 @@ function OptionsSection2({ title, label }) {
   );
 }
 
+const zoneOptionLists = [
+  {
+    name: "Zone 1",
+    label: "Zone 1",
+    type: "zone",
+  },
+  {
+    name: "Zone 2",
+    label: "Zone 2",
+    type: "zone",
+  },
+];
+
 export default function ConfiguratorViewer() {
   return (
     <>
-      <StickNavBar/>
+      <StickNavBar />
       <div className={styles.contentWrapper}>
         <div className={styles.productName}>ROCKERZ INVERTED SKATE GUARDS</div>
         <p>Image Configurator</p>
@@ -118,7 +130,7 @@ export default function ConfiguratorViewer() {
             <iframe
               id="modelViewerFrame"
               src="https://rockers.imagine.io/configurator/1"
-               // src="http://localhost:3000/configurator/1"
+              // src="http://localhost:3000/configurator/1"
               height="800"
               width="100%"
               title="Rockerz Inverted Skate Guards"
@@ -130,8 +142,15 @@ export default function ConfiguratorViewer() {
             <div className={styles.price}>
               <p>$348.00</p>
             </div>
-            <OptionsSection title="Zone 1" label="Zone 1" />
-            <OptionsSection title="Zone 2" label="Zone 2" />
+            {zoneOptionLists?.map((list, idx) => {
+              return (
+                <OptionsSection
+                  key={idx}
+                  title={list?.name}
+                  label={list?.label}
+                />
+              );
+            })}
             <OptionsSection2 title="Spring" label="Spring" />
             <button className={styles.addButton}>ADD TO CART</button>
           </div>

@@ -112,6 +112,52 @@ function OptionsSection2({ title, labels }) {
   );
 }
 
+const rightZoneOptionLists = [
+  {
+    name: "Zone 1",
+    labels: ["rZone4"],
+    type: "zone",
+  },
+  {
+    name: "Zone 2",
+    labels: ["rZone3"],
+    type: "zone",
+  },
+  {
+    name: "Zone 3",
+    labels: ["rZone2"],
+    type: "zone",
+  },
+  {
+    name: "Zone 4",
+    labels: ["rZone1"],
+    type: "zone",
+  },
+];
+
+const leftZoneOptionLists = [
+  {
+    name: "Zone 1",
+    labels: ["lZone4"],
+    type: "zone",
+  },
+  {
+    name: "Zone 2",
+    labels: ["lZone3"],
+    type: "zone",
+  },
+  {
+    name: "Zone 3",
+    labels: ["lZone2"],
+    type: "zone",
+  },
+  {
+    name: "Zone 4",
+    labels: ["lZone1"],
+    type: "zone",
+  },
+];
+
 export default function ConfiguratorViewer() {
   const [currentSide, setCurrentSide] = useState(BLADE_TYPE.RIGHT);
 
@@ -167,44 +213,29 @@ export default function ConfiguratorViewer() {
 
             {currentSide === BLADE_TYPE.RIGHT ? (
               <>
-               <OptionsSection
-                  title="Zone 1"
-                  labels={["rZone4"]}
-                  />
-                <OptionsSection
-                  title="Zone 2"
-                  labels={["rZone3"]}
-                />
-                <OptionsSection
-                  title="Zone 3"
-                  labels={["rZone2"]}
-                />
-                <OptionsSection
-                  title="Zone 4"
-                  labels={["rZone1"]}
-                />
+                {rightZoneOptionLists?.map((list, idx) => {
+                  return (
+                    <OptionsSection
+                      key={idx}
+                      title={list?.name}
+                      labels={list?.labels}
+                    />
+                  );
+                })}
               </>
             ) : (
               <>
-                <OptionsSection
-                  title="Zone 1"
-                  labels={["lZone4"]}
-                  />
-                <OptionsSection
-                  title="Zone 2"
-                  labels={["lZone3"]}
-                />
-                <OptionsSection
-                  title="Zone 3"
-                  labels={["lZone2"]}
-                />
-                <OptionsSection
-                  title="Zone 4"
-                  labels={["lZone1"]}
-                />
+                {leftZoneOptionLists?.map((list, idx) => {
+                  return (
+                    <OptionsSection
+                      key={idx}
+                      title={list?.name}
+                      labels={list?.labels}
+                    />
+                  );
+                })}
               </>
             )}
-
             <OptionsSection2
               title="Spring"
               labels={["rZoneSpring", "lZoneSpring"]}
