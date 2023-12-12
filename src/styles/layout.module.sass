@@ -117,17 +117,23 @@
     outline: inherit
 
 .homeContentWrapper
-    height: calc( 100vh - 9rem)
-    padding: 2rem
+    padding: 0 rem
     display: flex
     justify-content: center
     align-items: center
-    gap: 8rem
-
+    gap: 2rem
+    flex-wrap: wrap
     h2,h3,p
         // text-decoration: none
         color: #333
         font-weight: 600
-
 .navLink
     text-decoration: none
+.imageBox 
+    min-height:320px
+    max-width:378px
+    background:transparent
+    img 
+        max-height:320px
+        object-fit:cover
+        width:100%     
