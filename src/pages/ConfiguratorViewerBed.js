@@ -596,7 +596,7 @@ function OptionsSection({
                   ? { type: option, updateScene: true }
                   : {
                       label: label,
-                      option: option.id,
+                      option: option?.display_name || option?.name,
                     }
               );
             }}

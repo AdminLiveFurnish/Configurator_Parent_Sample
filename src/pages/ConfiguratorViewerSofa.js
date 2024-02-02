@@ -116,7 +116,7 @@ function OptionsSection({ title, label }) {
               setSelectedOption(option);
               sendData({
                 label: label,
-                option: option.id,
+                option: option?.display_name || option?.name,
               });
             }}
           >
