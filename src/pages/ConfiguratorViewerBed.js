@@ -1,6 +1,26 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/layout.module.sass";
 
+const CONFIGURATOR_NAME = "Configurator";
+const CONFIGURATOR_LABEL = "configurator";
+const THROW_AND_DECORATIVE_PILLOW_NAME = "Throw And Decorative Pillow";
+const THROW_AND_DECORATIVE_PILLOW_LABEL = "Throw and Decorative Pillow";
+const DUVET_FRONT_AND_PILLOW_NAME = "Duvet Front And Pillow";
+const DUVET_FRONT_AND_PILLOW_LABEL = "Duvet Front and pillow";
+const DUVET_BACK_AND_EURO_SHAM_NAME = "Duvet Back And Euro Sham";
+const DUVET_BACK_AND_EURO_SHAM_LABEL = "Duvet back and Euro sham";
+const SHEET_AND_STANDARD_SHAM_NAME = "Sheet And Standard Sham";
+const SHEET_AND_STANDARD_SHAM_LABEL = "Sheet and Standard sham";
+const DECORATIVE_PILLOW_NAME = "Decorative Pillows";
+const DECORATIVE_PILLOW_LABEL = "Decorative Pillows";
+
+const CONFIGURATOR_LIST = {
+  FULL_BADSET: "Full Bedset",
+  WITHOUT_THROW: "Without Throw",
+  FOUR_PILLOW_SET: "4 pillow set",
+  BADSHEET_SET: "Bedsheet set",
+};
+
 function OptionsSection({
   title,
   label,
@@ -10,28 +30,28 @@ function OptionsSection({
   const configuratorList = [
     {
       id: 421,
-      name: "Full Bedset",
+      name: CONFIGURATOR_LIST.FULL_BADSET,
       thumb:
         "https://media.imagine.io/media/public/cfg/4327/5479/359/scene/421/thumbnail/2c10eb1d_Full.jpeg?Expires=1707052148&Signature=H0B5jtUnn4oDleHbnYIv2AtPQYOjZJA5LAQxubhaLsUfuDiA0YnrdRONEsQUSf04kCL8bzP23v2PoWUz35HP7UJFNPcHHLA4dU85q4NkjSAFT6fOMKUOfBohPCJ3GALCbGgRs678Jt6J3Kfch5sQs5ku8LML6c2tRFE1TAmNooCl9bNI4Ec5cI09N1PSnxZITTvjIbva04G-Lp~uDzNGR7tgYB2EU33WJERMPIy2Kz4E444U7u6BGx11MjqZFlXZuesTwIut0As3EgXuHTRn6~zyCYNjllKAuB7hRDvKHp~WVZ~5fGo~X-D7sdAOBGcwCKSpm4QmYTzp1MrdG8Klbg__&Key-Pair-Id=K3MIEF79PIHRTH",
       config_type: "1",
     },
     {
       id: 423,
-      name: "Without Throw",
+      name: CONFIGURATOR_LIST.WITHOUT_THROW,
       thumb:
         "https://media.imagine.io/media/public/cfg/4327/5479/359/scene/423/thumbnail/b1b947bb_duvet.jpeg?Expires=1707052148&Signature=aWdIq2cfRlB6Y5Gzc8BktX0iUolJbxIEzj9Zd9Id8h1AIoI7NF5fCHHEyxRShYazS10bjQBjI3N54dN1BTZ-iVcB76cHcSskJYRfPC5iOHqKIschDtZcj313Emkm0eUb4~sEJ8WIkxQ1kpF410Qp6moHQnWOXHNDcBagw5l-AjjR9dCKBc8Z8oL4MXQs4SFISIbBAcfb6yNV240tTg5CPAwtf7ytmN494oG5KMwrPH736DNucxYDhjo6EKoDDAooxI0bQ~C8CiRh9F3RbFlcuT-gcE2E0-8m6kWPVScpNIdSZogZF7vKq7LQ9VkuCGKB15M3EIFoj-XqMgJh7XaxGw__&Key-Pair-Id=K3MIEF79PIHRTH",
       config_type: "1",
     },
     {
       id: 424,
-      name: "4 pillow set",
+      name: CONFIGURATOR_LIST.FOUR_PILLOW_SET,
       thumb:
         "https://media.imagine.io/media/public/cfg/4327/5479/359/scene/424/thumbnail/129b2c80_4_pillow.jpeg?Expires=1707052148&Signature=aamgVrIHHTDiXotrSxIapSGcV1~69klbriBQ0xRiHLUTTSD3YfW74mavASatmV4Z5f-arDuNbTOiykobZslNY-JWcj3ZAzoffO9SsZJQR5lhydgwMWciJurDwKPmh5DbEnkw4XT67cG846PeP~gUQhtKLX8u6uFxO8tNlKL~6BUiQKAaJqPCHTBn7r0dwfIx3pIg8zvnSbFpS7YqrPr6lxJ72Mqp7SKfvMoZRnUo1qcl~ooNCy67UcEj~~rfSDsCWwXFCvQ-QVLoDQGOVVZo5yL7-dZCNOVEpQdJjTzR5bgH7U2ZGdXW-Ho8usdn8kxWjLfG5Y0zIwGXCIFtaMqW9A__&Key-Pair-Id=K3MIEF79PIHRTH",
       config_type: "1",
     },
     {
       id: 425,
-      name: "Bedsheet set",
+      name: CONFIGURATOR_LIST.BADSHEET_SET,
       thumb:
         "https://media.imagine.io/media/public/cfg/4327/prabhu%40imagine.io/323/scene/365/thumbnail/5f3761da_product/thumbnail/None/1/thumbnail_ed_set_6_option_2.jpg?Expires=1707052148&Signature=QUVtofWzH9CDvxF7Rz8uYDgQ0eCviX-TLW5vaYmg4NoVg0-Z1-4rYcCRNudULGigs6KTxNxFAgOybWhR1~sBUJIjDf-F18lbIOU4rOH6ViIWyTh3pTNrjGq4cB3cjPO5o7t9Y9L25GLC11PukECJ4aMkSloYMpYViB2dPCeJwKyz6SpS1B1gsQPiGEZPLIj96~xPGfWZfYAlygyjwadDknaCO1W7mYMWa82UL8VCo9H81IsSoJicv1dSaYTdfxYtDciD0wrg21jLdXX13GeIau5nSo0lM4J3SKhyi4N1wo4ukB8X5AcpwQz6pNH9wXsYZsnvL8LIXcEHh1JPMx4Atg__&Key-Pair-Id=K3MIEF79PIHRTH",
       config_type: "1",
@@ -500,54 +520,54 @@ function OptionsSection({
 
   let options = [];
 
-  if (selectedConfigurator?.name === "Full Bedset") {
+  if (selectedConfigurator?.name === CONFIGURATOR_LIST.FULL_BADSET) {
     switch (label) {
-      case "Throw and Decorative Pillow":
+      case THROW_AND_DECORATIVE_PILLOW_LABEL:
         options = FullBedsetThrowAndDecorativePillowOptions;
         break;
-      case "Duvet Front and pillow":
+      case DUVET_FRONT_AND_PILLOW_LABEL:
         options = FullBedsetDuvetFrontPillowOptions;
         break;
-      case "Duvet back and Euro sham":
+      case DUVET_BACK_AND_EURO_SHAM_LABEL:
         options = FullBedsetDuvetBackEuroShamOptions;
         break;
-      case "Sheet and Standard sham":
+      case SHEET_AND_STANDARD_SHAM_LABEL:
         options = FullBedsetSheetAndStandardSham;
     }
   }
-  if (selectedConfigurator?.name === "Without Throw") {
+  if (selectedConfigurator?.name === CONFIGURATOR_LIST.WITHOUT_THROW) {
     switch (label) {
-      case "Duvet Front and pillow":
+      case DUVET_FRONT_AND_PILLOW_LABEL:
         options = withoutThrowDuvetFrontPillowOptions;
         break;
-      case "Duvet back and Euro sham":
+      case DUVET_BACK_AND_EURO_SHAM_LABEL:
         options = withoutThrowDuvetBackEuroShamOptions;
         break;
-      case "Sheet and Standard sham":
+      case SHEET_AND_STANDARD_SHAM_LABEL:
         options = withoutThrowSheetAndStandardSham;
     }
   }
-  if (selectedConfigurator?.name === "4 pillow set") {
+  if (selectedConfigurator?.name === CONFIGURATOR_LIST.FOUR_PILLOW_SET) {
     switch (label) {
-      case "Throw and Decorative Pillow":
-        title = "Decorative Pillows";
-        label = "Decorative Pillows";
+      case THROW_AND_DECORATIVE_PILLOW_LABEL:
+        title = DECORATIVE_PILLOW_NAME;
+        label = DECORATIVE_PILLOW_LABEL;
 
         options = fourPillowSetDecorativePillowsOptions;
         break;
-      case "Sheet and Standard sham":
+      case SHEET_AND_STANDARD_SHAM_LABEL:
         options = fourPillowSetSheetAndStandardOptions;
     }
   }
-  if (selectedConfigurator?.name === "Bedsheet set") {
+  if (selectedConfigurator?.name === CONFIGURATOR_LIST.BADSHEET_SET) {
     switch (label) {
-      case "Sheet and Standard sham":
+      case SHEET_AND_STANDARD_SHAM_LABEL:
         options = badSheetSetSheetAndStandardOptions;
     }
   }
 
   switch (label) {
-    case "configurator":
+    case CONFIGURATOR_LABEL:
       options = configuratorList;
       break;
   }
@@ -586,13 +606,13 @@ function OptionsSection({
             }}
             key={index}
             onClick={() => {
-              if (label === "configurator") {
+              if (label === CONFIGURATOR_LABEL) {
                 setSelectedConfigurator(option);
               } else {
                 setSelectedOption(option);
               }
               sendData(
-                label === "configurator"
+                label === CONFIGURATOR_LABEL
                   ? { type: option, updateScene: true }
                   : {
                       label: label,
@@ -605,12 +625,12 @@ function OptionsSection({
             {(option?.display_name || option?.name) && (
               <span
                 className={
-                  label === "configurator" &&
+                  label === CONFIGURATOR_LABEL &&
                   selectedConfigurator?.name ===
                     (option?.display_name || option?.name)
                     ? styles.selectedMenu
                     : selectedOption?.id === option?.id &&
-                      label !== "configurator"
+                      label !== CONFIGURATOR_LABEL
                     ? styles.selectedMenu
                     : ""
                 }
@@ -628,37 +648,39 @@ function OptionsSection({
 
 const zoneOptionLists = [
   {
-    name: "Configurator",
-    label: "configurator",
+    name: CONFIGURATOR_NAME,
+    label: CONFIGURATOR_LABEL,
   },
   {
-    name: "Throw And Decorative Pillow",
-    label: "Throw and Decorative Pillow",
+    name: THROW_AND_DECORATIVE_PILLOW_NAME,
+    label: THROW_AND_DECORATIVE_PILLOW_LABEL,
   },
   {
-    name: "Duvet Front And Pillow",
-    label: "Duvet Front and pillow",
+    name: DUVET_FRONT_AND_PILLOW_NAME,
+    label: DUVET_FRONT_AND_PILLOW_LABEL,
   },
   {
-    name: "Duvet back And Euro Sham",
-    label: "Duvet back and Euro sham",
+    name: DUVET_BACK_AND_EURO_SHAM_NAME,
+    label: DUVET_BACK_AND_EURO_SHAM_LABEL,
   },
   {
-    name: "Sheet And Standard Sham",
-    label: "Sheet and Standard sham",
+    name: SHEET_AND_STANDARD_SHAM_NAME,
+    label: SHEET_AND_STANDARD_SHAM_LABEL,
   },
 ];
 
 export default function ConfiguratorViewer() {
   const [selectedConfigurator, setSelectedConfigurator] = useState({
     id: 421,
-    name: "Full Bedset",
+    name: CONFIGURATOR_LIST.FULL_BADSET,
     config_type: "1",
   });
   return (
     <>
       <div className={styles.contentWrapper}>
-        <div className={styles.productName}>{selectedConfigurator?.name || "Full Bedset"}</div>
+        <div className={styles.productName}>
+          {selectedConfigurator?.name || CONFIGURATOR_LIST.FULL_BADSET}
+        </div>
         <p>Image Configurator</p>
         <div className={styles.viewerWrapper}>
           <div className={styles.viewer}>

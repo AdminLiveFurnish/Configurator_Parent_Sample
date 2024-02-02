@@ -1,6 +1,9 @@
 import { useState } from "react";
 import styles from "../styles/layout.module.sass";
 
+const SEAT_FABRIC = "Seat Fabric";
+const FRAME = "Frame";
+
 function OptionsSection({ title, label }) {
   const seatFabricOption = [
     {
@@ -80,9 +83,9 @@ function OptionsSection({ title, label }) {
     },
   ];
   const options =
-    label === "Seat Fabric"
+    label === SEAT_FABRIC
       ? seatFabricOption
-      : label === "Frame"
+      : label === FRAME
       ? frameOptions
       : [];
   const [selectedOption, setSelectedOption] = useState(options?.[0] || {});
@@ -140,16 +143,12 @@ function OptionsSection({ title, label }) {
 
 const zoneOptionLists = [
   {
-    name: "Seat Fabric",
-    label: "Seat Fabric",
+    name: SEAT_FABRIC,
+    label: SEAT_FABRIC,
   },
   {
-    name: "default_label",
-    label: "default_label",
-  },
-  {
-    name: "Frame",
-    label: "Frame",
+    name: FRAME,
+    label: FRAME,
   },
 ];
 
