@@ -1,5 +1,4 @@
 // import {signal} from "@preact/signals-react"
-import StickNavBar from "../components/StickyNavBar";
 import styles from "../styles/layout.module.sass";
 
 // const currentside = signal(0);  //0 right or common 1 for left
@@ -112,7 +111,6 @@ export default function ConfiguratorViewer() {
 
   return (
     <>
-      <StickNavBar />
       <div className={styles.contentWrapper}>
         <div className={styles.productName}>ROCKERZ INVERTED SKATE GUARDS</div>
         <p>Model viewer</p>

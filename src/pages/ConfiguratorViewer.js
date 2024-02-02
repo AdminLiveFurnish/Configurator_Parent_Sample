@@ -1,5 +1,4 @@
 
-import StickNavBar from "../components/StickyNavBar";
 import styles from "../styles/layout.module.sass";
 
 function OptionsSection({ title, label }) {
@@ -110,7 +109,6 @@ function OptionsSection2({ title, label }) {
 export default function ConfiguratorViewer() {
   return (
     <>
-      <StickNavBar/>
       <div className={styles.contentWrapper}>
         <div className={styles.productName}>ROCKERZ INVERTED SKATE GUARDS</div>
         <p>Image Configurator</p>
